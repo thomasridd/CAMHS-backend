@@ -2,18 +2,13 @@ package com.github.thomasridd.datalino.api;
 
 import com.github.davidcarboni.restolino.framework.NotFound;
 import com.github.davidcarboni.restolino.json.Serialiser;
-import com.jayway.jsonpath.Criteria;
 import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.Filter;
 import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Predicate;
 import net.minidev.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
