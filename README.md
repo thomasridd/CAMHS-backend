@@ -1,5 +1,15 @@
 # Datalino
-Add files to /src/main/resources to access them 
+A lightweight server for prototype data development
+
+Add a .json file to the resources folder to add that endpoint
+
+### Example
+
+These examples come from the sample project's names.json
+
+- https://datalino.herokuapp.com/names
+- https://datalino.herokuapp.com/names?Rank=1
+- https://datalino.herokuapp.com/names?jsonpath=$..Name
 
 ## Getting Started
 
