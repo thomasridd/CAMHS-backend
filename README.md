@@ -11,7 +11,7 @@ These examples come from the sample project's names.json
 - https://datalino.herokuapp.com/names?Rank=1
 - https://datalino.herokuapp.com/names?Sex=Male
 - https://datalino.herokuapp.com/names?jsonpath=$..Name
-- https://datalino.herokuapp.com/names?jsonpath=[?(@.Rank%3C=10)][?(@.Rank%3E5)]&Sex=Male
+- https://datalino.herokuapp.com/names?jsonpath=[?(@.Rank<=10)][?(@.Rank>5)]
 
 ## Getting Started
 
