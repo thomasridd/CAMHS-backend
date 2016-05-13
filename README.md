@@ -9,7 +9,9 @@ These examples come from the sample project's names.json
 
 - https://datalino.herokuapp.com/names
 - https://datalino.herokuapp.com/names?Rank=1
+- https://datalino.herokuapp.com/names?Sex=Male
 - https://datalino.herokuapp.com/names?jsonpath=$..Name
+- https://datalino.herokuapp.com/names?jsonpath=[?(@.Rank%3C=10)][?(@.Rank%3E5)]&Sex=Male
 
 ## Getting Started
 
@@ -28,3 +30,8 @@ Repeat with
 ```
 git push heroku master
 ```
+
+### Dependencies
+
+- JsonPath https://github.com/jayway/JsonPath
+- Restolino https://github.com/davidcarboni/restolino
