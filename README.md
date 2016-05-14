@@ -1,16 +1,15 @@
-# Datalino
+# CAMHS-api
 A lightweight server for prototype data development
 
-Add a .json file to the resources folder to add that endpoint
+Quick data server to get us up and running
 
 ### Example
 
 These examples come from the sample project's names.json
 
-- https://datalino.herokuapp.com/names
-- https://datalino.herokuapp.com/names?Rank=1
-- https://datalino.herokuapp.com/names?Sex=Male
-- https://datalino.herokuapp.com/names?jsonpath=$..Name
+- https://camhs-api.herokuapp.com/trusts
+- https://camhs-api.herokuapp.com/trusts?region=Gloucestershire
+- https://camhs-api.herokuapp.com/trusts?beds_available_type1=1
 
 
 ## Getting Started
@@ -18,17 +17,6 @@ These examples come from the sample project's names.json
 ### Running locally
 ```
 ./run.sh
-```
-
-### Deploy to Heroku
-```
-heroku login
-heroku create [some name]
-git push heroku master
-```
-Repeat with
-```
-git push heroku master
 ```
 
 ### Dependencies
