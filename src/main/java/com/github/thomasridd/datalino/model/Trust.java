@@ -12,9 +12,9 @@ public class Trust {
   int beds_type1;
   int beds_type2;
   int beds_type3;
-  int beds_available_type1;
-  int beds_available_type2;
-  int beds_available_type3;
+  public int beds_available_type1;
+  public int beds_available_type2;
+  public int beds_available_type3;
 
   double latitude;
   double longitude;
