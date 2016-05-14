@@ -16,7 +16,13 @@ public class Trust {
   public int beds_available_type2;
   public int beds_available_type3;
 
-  double latitude;
-  double longitude;
-  double distance;
+  public double latitude;
+  public double longitude;
+  public double distance;
+
+  public void setDistanceTo(Trust trust) {
+    distance = 111131 * Math.pow(trust.latitude - latitude, 2) +
+            788446 * Math.pow(trust.longitude - longitude, 2);
+    distance = Math.pow(distance, 0.5);
+  }
 }
