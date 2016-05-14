@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  */
 public class BedRequestList extends ArrayList<BedRequest>{
 
-  BedRequest getRequest(String id) {
+  public BedRequest getRequest(String id) {
     List<BedRequest> collect = this.stream().filter(bedRequest -> bedRequest.id.equalsIgnoreCase(id)).collect(Collectors.toList());
     return collect.size() > 0 ? collect.get(0) : null;
   }
