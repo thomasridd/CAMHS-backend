@@ -22,6 +22,8 @@ public class Requests {
 
   @GET
   public List<BedRequest> get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.addHeader("Access-Control-Allow-Origin", "*");
+
     List<BedRequest> bedRequestList = new ArrayList<>();
 
     String[] split = request.getPathInfo().split("/");

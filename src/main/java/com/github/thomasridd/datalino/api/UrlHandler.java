@@ -20,7 +20,7 @@ public class UrlHandler implements NotFound {
 
   @Override
   public Object handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
-
+    res.addHeader("Access-Control-Allow-Origin", "*");
 
     Object jsonObj = getJsonAtPath(req.getPathInfo(), req.getParameterMap());
     Serialiser.serialise(res, jsonObj);

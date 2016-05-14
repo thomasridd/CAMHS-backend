@@ -18,6 +18,8 @@ import javax.ws.rs.GET;
 public class Trusts {
   @GET
   public TrustList get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.addHeader("Access-Control-Allow-Origin", "*");
+
     return Root.getTrustList();
   }
 }

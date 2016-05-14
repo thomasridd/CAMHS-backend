@@ -19,6 +19,8 @@ import javax.ws.rs.POST;
 public class Beds {
   @GET
   public int get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.addHeader("Access-Control-Allow-Origin", "*");
+
     String[] split = request.getPathInfo().split("/");
     if (split.length == 5) {
       String trustId = split[2];

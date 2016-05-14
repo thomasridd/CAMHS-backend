@@ -22,6 +22,7 @@ public class Request {
 
   @POST
   public boolean post(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.addHeader("Access-Control-Allow-Origin", "*");
 
     String[] split = request.getPathInfo().split("/");
     if (split.length < 3) {
@@ -50,6 +51,8 @@ public class Request {
 
   @GET
   public BedRequest get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    response.addHeader("Access-Control-Allow-Origin", "*");
+
     String[] split = request.getPathInfo().split("/");
     if (split.length < 2) {
       return null;
