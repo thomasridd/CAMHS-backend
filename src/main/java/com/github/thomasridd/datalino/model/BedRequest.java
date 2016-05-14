@@ -20,4 +20,12 @@ public class BedRequest {
   public int accepted = 0;
   public int rejected = 0;
   public int cancelled = 0;
+
+  public Date created;
+  public Date completed;
+
+  public String referredBy;
+  public String nhsNumber;
+  public String age;
+  public String gender;
 }

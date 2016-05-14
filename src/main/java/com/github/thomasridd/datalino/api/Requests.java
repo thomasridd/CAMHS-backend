@@ -3,6 +3,7 @@ package com.github.thomasridd.datalino.api;
 import com.github.davidcarboni.restolino.framework.Api;
 import com.github.thomasridd.datalino.model.BedRequest;
 import com.github.thomasridd.datalino.model.BedRequestList;
+import com.github.thomasridd.datalino.model.PBedRequest;
 import com.github.thomasridd.datalino.model.Root;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ import javax.ws.rs.GET;
 public class Requests {
 
   @GET
-  public List<BedRequest> get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public List<PBedRequest> get(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.addHeader("Access-Control-Allow-Origin", "*");
 
     List<BedRequest> bedRequestList = new ArrayList<>();
@@ -63,7 +64,12 @@ public class Requests {
               .collect(Collectors.toList());
     }
 
-      return bedRequestList;
+     List<PBedRequest> pBedRequests = new ArrayList<>();
+    for (BedRequest bedRequest: bedRequestList) {
+      pBedRequests.add(new PBedRequest(bedRequest));
+    }
+
+    return pBedRequests;
   }
 
 

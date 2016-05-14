@@ -2,6 +2,7 @@ package com.github.thomasridd.datalino.api;
 
 import com.github.davidcarboni.restolino.framework.Api;
 import com.github.thomasridd.datalino.model.BedRequest;
+import com.github.thomasridd.datalino.model.PBedRequest;
 import com.github.thomasridd.datalino.model.Root;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class Request {
   }
 
   @GET
-  public BedRequest get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public PBedRequest get(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.addHeader("Access-Control-Allow-Origin", "*");
 
     String[] split = request.getPathInfo().split("/");
@@ -58,28 +59,28 @@ public class Request {
       return null;
     } else if (split.length == 2){
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
-      return bedRequest;
+      return new PBedRequest(bedRequest);
 
     } else if (split[3].equalsIgnoreCase("reject")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
         bedRequest.rejected = 1;
       }
-      return bedRequest;
+      return new PBedRequest(bedRequest);
 
     } else if (split[3].equalsIgnoreCase("accept")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
         bedRequest.accepted = 1;
       }
-      return bedRequest;
+      return new PBedRequest(bedRequest);
 
     } else if (split[3].equalsIgnoreCase("cancel")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
         bedRequest.cancelled = 1;
       }
-      return bedRequest;
+      return new PBedRequest(bedRequest);
 
     }
     return null;

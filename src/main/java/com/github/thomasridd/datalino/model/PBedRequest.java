@@ -1,6 +1,7 @@
 package com.github.thomasridd.datalino.model;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by Tom.Ridd on 14/05/2016.
@@ -26,10 +27,21 @@ public class PBedRequest {
 
   public String status;
 
+  public Date created;
+  public Date completed;
+
+
+  public String referredBy;
+  public String nhsNumber;
+  public String age;
+  public String gender;
+
   public PBedRequest(BedRequest bedRequest) throws IOException {
     id = bedRequest.id;
     originId = bedRequest.originId;
     originTrust = Root.getTrustList().getTrust(originId);
+
+    patient = bedRequest.patient;
 
     destinationId = bedRequest.destinationId;
     destinationTrust = Root.getTrustList().getTrust(destinationId);
@@ -47,5 +59,12 @@ public class PBedRequest {
     else if (cancelled == 1) { status = "Cancelled"; }
     else { status = "Active"; }
 
+    created = bedRequest.created;
+    completed = bedRequest.completed;
+
+    referredBy = bedRequest.referredBy;
+    nhsNumber = bedRequest.nhsNumber;
+    age = bedRequest.age;
+    gender = bedRequest.gender;
   }
 }
