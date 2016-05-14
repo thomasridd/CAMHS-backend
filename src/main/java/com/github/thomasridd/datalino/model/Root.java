@@ -37,4 +37,9 @@ public class Root {
     }
     return bedRequestList;
   }
+
+  public static void addBedRequest(BedRequest bedRequest) throws IOException {
+    Root.getBedRequestList();
+    bedRequestList.add(bedRequest);
+  }
 }

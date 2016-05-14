@@ -7,6 +7,7 @@ import com.github.thomasridd.datalino.model.Root;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,18 +32,21 @@ public class Request {
     } else if (split[3].equalsIgnoreCase("reject")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.rejected = 1;
       }
 
     } else if (split[3].equalsIgnoreCase("accept")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.accepted = 1;
       }
 
     } else if (split[3].equalsIgnoreCase("cancel")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.cancelled = 1;
       }
 
@@ -57,13 +61,14 @@ public class Request {
     String[] split = request.getPathInfo().split("/");
     if (split.length < 2) {
       return null;
-    } else if (split.length == 2){
+    } else if (split.length == 3){
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       return new PBedRequest(bedRequest);
 
     } else if (split[3].equalsIgnoreCase("reject")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.rejected = 1;
       }
       return new PBedRequest(bedRequest);
@@ -71,6 +76,7 @@ public class Request {
     } else if (split[3].equalsIgnoreCase("accept")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.accepted = 1;
       }
       return new PBedRequest(bedRequest);
@@ -78,6 +84,7 @@ public class Request {
     } else if (split[3].equalsIgnoreCase("cancel")) {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       if (bedRequest != null) {
+        bedRequest.completed = new Date();
         bedRequest.cancelled = 1;
       }
       return new PBedRequest(bedRequest);

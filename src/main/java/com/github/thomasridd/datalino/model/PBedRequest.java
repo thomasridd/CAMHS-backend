@@ -27,7 +27,7 @@ public class PBedRequest {
 
   public String status;
 
-  public Date created;
+  public Date created = new Date();
   public Date completed;
 
 
@@ -59,7 +59,7 @@ public class PBedRequest {
     else if (cancelled == 1) { status = "Cancelled"; }
     else { status = "Active"; }
 
-    created = bedRequest.created;
+    created = new Date();
     completed = bedRequest.completed;
 
     referredBy = bedRequest.referredBy;

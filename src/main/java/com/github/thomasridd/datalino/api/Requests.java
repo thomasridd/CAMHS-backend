@@ -8,12 +8,14 @@ import com.github.thomasridd.datalino.model.Root;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 
 /**
  * Created by Tom.Ridd on 14/05/2016.
@@ -73,5 +75,12 @@ public class Requests {
   }
 
 
-
+  @POST
+  public BedRequest create(HttpServletRequest request,
+                                      HttpServletResponse response,
+                                      BedRequest bedRequest) throws IOException {
+    bedRequest.created = new Date();
+    Root.addBedRequest(bedRequest);
+    return bedRequest;
+  }
 }
