@@ -7,6 +7,7 @@ import com.github.thomasridd.datalino.model.TrustList;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,15 +34,29 @@ public class Search {
 
       String bedType = split[3];
       if (bedType.equalsIgnoreCase("1")) {
-        trusts = trustList.stream().filter(trust -> trust.beds_available_type1 > 0).collect(Collectors.toList());
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type1 > 0)
+                .collect(Collectors.toList());
       } else if (bedType.equalsIgnoreCase("2")) {
-        trusts = trustList.stream().filter(trust -> trust.beds_available_type2 > 0).collect(Collectors.toList());
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type2 > 0)
+                .collect(Collectors.toList());
       } else if (bedType.equalsIgnoreCase("3")) {
-        trusts = trustList.stream().filter(trust -> trust.beds_available_type3 > 0).collect(Collectors.toList());
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type3 > 0)
+                .collect(Collectors.toList());
       }
 
       trusts.stream().forEach(trust -> trust.setDistanceTo(origin));
-
+      trusts.sort(new Comparator<Trust>() {
+                @Override
+                public int compare(Trust o1, Trust o2) {
+                  return Double.compare(o1.distance, o2.distance);
+                }
+              });
       return trusts;
     }
 

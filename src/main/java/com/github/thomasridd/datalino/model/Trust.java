@@ -21,8 +21,8 @@ public class Trust {
   public double distance;
 
   public void setDistanceTo(Trust trust) {
-    distance = 111131 * Math.pow(trust.latitude - latitude, 2) +
-            788446 * Math.pow(trust.longitude - longitude, 2);
-    distance = Math.pow(distance, 0.5);
+    distance = 110.574 * Math.pow(trust.latitude - latitude, 2) +
+            69.29 * Math.pow(trust.longitude - longitude, 2);
+    distance = 0.621371 * Math.pow(distance, 0.5);
   }
 }
