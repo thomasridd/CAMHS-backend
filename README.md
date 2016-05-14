@@ -3,13 +3,27 @@ A lightweight server for prototype data development
 
 Quick data server to get us up and running
 
-### Example
+### End points
 
-These examples come from the sample project's names.json
-
+##### Trusts
+- https://camhs-api.herokuapp.com/trust/{trust_id}
 - https://camhs-api.herokuapp.com/trusts
-- https://camhs-api.herokuapp.com/trusts?region=Gloucestershire
-- https://camhs-api.herokuapp.com/trusts?beds_available_type1=1
+
+##### Bed requests
+- https://camhs-api.herokuapp.com/request/{request_id}
+- https://camhs-api.herokuapp.com/request/{request_id}/reject
+- https://camhs-api.herokuapp.com/request/{request_id}/accept
+- https://camhs-api.herokuapp.com/request/{request_id}/cancel
+
+##### Inbox and outbox
+- https://camhs-api.herokuapp.com/requests/sent/{trust_id}
+- https://camhs-api.herokuapp.com/requests/received/{trust_id}
+- ?status=active ?status=rejected ?status=accepted ?status=cancelled
+
+##### Beds of various types
+- https://camhs-api.herokuapp.com/beds/{trust_id}/{bed_type}
+- https://camhs-api.herokuapp.com/beds/{trust_id}/{bed_type}/plus
+- https://camhs-api.herokuapp.com/beds/{trust_id}/{bed_type}/minus
 
 
 ## Getting Started
