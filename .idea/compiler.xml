@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="datalino" />
+        <module name="Datalino" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="datalino" target="1.8" />
+      <module name="Datalino" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/datalino.iml" filepath="$PROJECT_DIR$/datalino.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Datalino.iml" filepath="$PROJECT_DIR$/Datalino.iml" />
     </modules>
   </component>
 </project>
