@@ -65,24 +65,36 @@ public class Request {
       BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
       return new PBedRequest(bedRequest);
 
-    } else if (split[3].equalsIgnoreCase("reject")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
+    } else {
+        String action = split[3];
+        String id = split[2];
+
+      PBedRequest bedRequest = actionBedRequest(action, id);
+
+      if (bedRequest != null) return bedRequest;
+    }
+    return null;
+  }
+
+  public PBedRequest actionBedRequest(String action, String id) throws IOException {
+    if (action.equalsIgnoreCase("reject")) {
+      BedRequest bedRequest = Root.getBedRequestList().getRequest(id);
       if (bedRequest != null) {
         bedRequest.completed = new Date();
         bedRequest.rejected = 1;
       }
       return new PBedRequest(bedRequest);
 
-    } else if (split[3].equalsIgnoreCase("accept")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
+    } else if (action.equalsIgnoreCase("accept")) {
+      BedRequest bedRequest = Root.getBedRequestList().getRequest(id);
       if (bedRequest != null) {
         bedRequest.completed = new Date();
         bedRequest.accepted = 1;
       }
       return new PBedRequest(bedRequest);
 
-    } else if (split[3].equalsIgnoreCase("cancel")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
+    } else if (action.equalsIgnoreCase("cancel")) {
+      BedRequest bedRequest = Root.getBedRequestList().getRequest(id);
       if (bedRequest != null) {
         bedRequest.completed = new Date();
         bedRequest.cancelled = 1;

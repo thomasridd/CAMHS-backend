@@ -31,9 +31,9 @@ public class Root {
 
   public static BedRequestList getBedRequestList() throws IOException {
 
-    URL resource = UrlHandler.class.getResource("/bedrequests.json");
+    //URL resource = UrlHandler.class.getResource("/bedrequests.json");
     if (bedRequestList == null) {
-      bedRequestList = Serialiser.deserialise(Paths.get(resource.getPath()),BedRequestList.class);
+      bedRequestList = new BedRequestList();
     }
     return bedRequestList;
   }

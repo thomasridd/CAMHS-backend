@@ -2,8 +2,11 @@ package com.github.thomasridd.datalino.api;
 
 import com.github.davidcarboni.restolino.framework.Api;
 import com.github.thomasridd.datalino.model.*;
+import com.github.thomasridd.datalino.model.Trust;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +19,7 @@ import javax.ws.rs.GET;
 @Api
 public class PostRequest {
   @GET
-  public PBedRequest get(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public List<PBedRequest> get(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.addHeader("Access-Control-Allow-Origin", "*");
 
     String originId = request.getParameter("originId");
@@ -27,8 +30,24 @@ public class PostRequest {
     String age = request.getParameter("age");
     String gender = request.getParameter("gender");
 
+
+    return sendBedRequest(originId, patient, beds_type, referredBy, nhsNumber, age, gender);
+  }
+
+  public List<PBedRequest> sendBedRequest(String originId, String patient,
+                                     String beds_type, String referredBy,
+                                     String nhsNumber, String age, String gender) throws IOException {
+    return sendBedRequest(originId, patient, beds_type, referredBy,
+            nhsNumber, age, gender, new Date());
+  }
+
+  public List<PBedRequest> sendBedRequest(String originId, String patient,
+                                     String beds_type, String referredBy,
+                                     String nhsNumber, String age, String gender,
+                                     Date createdAt) throws IOException {
     Search search = new Search();
-    List<com.github.thomasridd.datalino.model.Trust> trusts = search.get(originId, beds_type);
+    List<Trust> trusts = search.get(originId, beds_type);
+    List<PBedRequest> bedRequests = new ArrayList<>();
 
     BedRequest bedRequest = null;
     for (int i = 0; (i < 5 && i < trusts.size()); i ++) {
@@ -50,9 +69,12 @@ public class PostRequest {
         bedRequest.beds_type = 3;
         bedRequest.beds_type3 = 1;
       }
-      Root.addBedRequest(bedRequest);
-    }
-    return new PBedRequest(bedRequest);
-  }
+      bedRequest.id = Root.getBedRequestList().size() + "";
+      bedRequest.created = createdAt;
 
+      Root.addBedRequest(bedRequest);
+      bedRequests.add(new PBedRequest(bedRequest));
+    }
+    return bedRequests;
+  }
 }
