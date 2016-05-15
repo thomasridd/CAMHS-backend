@@ -13,21 +13,19 @@
 - https://camhs-api.herokuapp.com/request/{request_id}/accept
 - https://camhs-api.herokuapp.com/request/{request_id}/cancel
 
-##### POST Request
-- https://camhs-api.herokuapp.com/requests
+##### Add a request
+This is currently done using a parameter based get request to the postrequest endpoint
+
+The request does a search for the closest hospitals with available beds and posts them a bed request
+- https://camhs-api.herokuapp.com/postrequest?originId=RV01 ...
 ```
-  {
     originId: RV01,         <- Requesting trust id
-    destinationId: RV1C2,   <- Provider trust id
-    patient: "Tom Ridd"     <- Patient name
-    beds_type1: = 1,        <- Beds requested (0 or 1)
-    beds_type2: = 0,
-    beds_type3: = 0,
+    patient: "Tom"          <- Patient name
+    beds_type: = 1,         <- Bed type requested (1, 2, 3)
     referredBy: "Dr Moghraby" <- Doctor name
     nhsNumber: 09101313     <- Patient nhs number
-    age: 16,
+    age: 16,                <- Patient age
     gender: Male,           <- (Male/Female)
-   }
 ```
 ##### Inbox and outbox
 - https://camhs-api.herokuapp.com/requests/sent/{trust_id}

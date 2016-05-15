@@ -50,6 +50,7 @@ public class PostRequest {
         bedRequest.beds_type = 3;
         bedRequest.beds_type3 = 1;
       }
+      Root.addBedRequest(bedRequest);
     }
     return new PBedRequest(bedRequest);
   }
