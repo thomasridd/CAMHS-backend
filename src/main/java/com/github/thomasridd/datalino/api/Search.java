@@ -68,6 +68,7 @@ public class Search {
     List<Trust> trusts = new ArrayList<>();
 
       Trust origin = trustList.getTrust(trustId);
+      if (origin == null) { return new ArrayList<>(); }
 
       if (bedType.equalsIgnoreCase("1")) {
 
