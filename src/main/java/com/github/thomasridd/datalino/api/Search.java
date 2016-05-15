@@ -62,4 +62,37 @@ public class Search {
 
     return new ArrayList<>();
   }
+
+  public List<Trust> get(String trustId, String bedType) throws IOException {
+    TrustList trustList = Root.getTrustList();
+    List<Trust> trusts = new ArrayList<>();
+
+      Trust origin = trustList.getTrust(trustId);
+
+      if (bedType.equalsIgnoreCase("1")) {
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type1 > 0)
+                .collect(Collectors.toList());
+      } else if (bedType.equalsIgnoreCase("2")) {
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type2 > 0)
+                .collect(Collectors.toList());
+      } else if (bedType.equalsIgnoreCase("3")) {
+
+        trusts = trustList.stream()
+                .filter(trust -> trust.beds_available_type3 > 0)
+                .collect(Collectors.toList());
+      }
+
+      trusts.stream().forEach(trust -> trust.setDistanceTo(origin));
+      trusts.sort(new Comparator<Trust>() {
+        @Override
+        public int compare(Trust o1, Trust o2) {
+          return Double.compare(o1.distance, o2.distance);
+        }
+      });
+      return trusts;
+    }
 }

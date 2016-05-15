@@ -37,34 +37,41 @@ public class PBedRequest {
   public String gender;
 
   public PBedRequest(BedRequest bedRequest) throws IOException {
-    id = bedRequest.id;
-    originId = bedRequest.originId;
-    originTrust = Root.getTrustList().getTrust(originId);
+    if (bedRequest != null) {
+      id = bedRequest.id;
+      originId = bedRequest.originId;
+      originTrust = Root.getTrustList().getTrust(originId);
 
-    patient = bedRequest.patient;
+      patient = bedRequest.patient;
 
-    destinationId = bedRequest.destinationId;
-    destinationTrust = Root.getTrustList().getTrust(destinationId);
+      destinationId = bedRequest.destinationId;
+      destinationTrust = Root.getTrustList().getTrust(destinationId);
 
-    beds_type1 = bedRequest.beds_type1;
-    beds_type2 = bedRequest.beds_type2;
-    beds_type3 = bedRequest.beds_type3;
+      beds_type1 = bedRequest.beds_type1;
+      beds_type2 = bedRequest.beds_type2;
+      beds_type3 = bedRequest.beds_type3;
 
-    accepted = bedRequest.accepted;
-    rejected = bedRequest.rejected;
-    cancelled = bedRequest.cancelled;
+      accepted = bedRequest.accepted;
+      rejected = bedRequest.rejected;
+      cancelled = bedRequest.cancelled;
 
-    if (accepted == 1) { status = "Accepted"; }
-    else if (rejected == 1) { status = "Rejected"; }
-    else if (cancelled == 1) { status = "Cancelled"; }
-    else { status = "Active"; }
+      if (accepted == 1) {
+        status = "Accepted";
+      } else if (rejected == 1) {
+        status = "Rejected";
+      } else if (cancelled == 1) {
+        status = "Cancelled";
+      } else {
+        status = "Active";
+      }
 
-    created = new Date();
-    completed = bedRequest.completed;
+      created = new Date();
+      completed = bedRequest.completed;
 
-    referredBy = bedRequest.referredBy;
-    nhsNumber = bedRequest.nhsNumber;
-    age = bedRequest.age;
-    gender = bedRequest.gender;
+      referredBy = bedRequest.referredBy;
+      nhsNumber = bedRequest.nhsNumber;
+      age = bedRequest.age;
+      gender = bedRequest.gender;
+    }
   }
 }

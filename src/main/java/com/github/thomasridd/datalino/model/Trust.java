@@ -4,8 +4,8 @@ package com.github.thomasridd.datalino.model;
  * Created by Tom.Ridd on 14/05/2016.
  */
 public class Trust {
-  String id;
-  String name;
+  public String id;
+  public String name;
   String location;
   String region;
   String postcode;
