@@ -58,14 +58,14 @@ public class Request {
       if (bedRequest != null) {
         bedRequest.completed = new Date();
         bedRequest.accepted = 1;
-      }
 
-      Root.getBedRequestList().stream()
-              .filter(altRequest -> altRequest.nhsNumber.equalsIgnoreCase(bedRequest.nhsNumber))
-              .filter(altRequest -> (altRequest.rejected + altRequest.accepted) == 0)
-              .forEach(altRequest -> {
-                altRequest.cancelled = 1;
-              });
+        Root.getBedRequestList().stream()
+                .filter(altRequest -> altRequest.nhsNumber.equalsIgnoreCase(bedRequest.nhsNumber))
+                .filter(altRequest2 -> ((altRequest2.rejected + altRequest2.accepted) == 0))
+                .forEach(altRequest3 -> {
+                  altRequest3.cancelled = 1;
+                });
+      }
 
       return new PBedRequest(bedRequest);
 

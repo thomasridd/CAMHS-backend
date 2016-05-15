@@ -1,5 +1,10 @@
 # CAMHS-api
+Backend api for CAMHS Bedfinder @NHSHackday 13
 
+- Bed Manager: http://nhshd-bed-finder.github.io/bed-finder/
+
+
+- Dashboard: https://bedfinder-dashboard.herokuapp.com/
 
 ### End points
 
