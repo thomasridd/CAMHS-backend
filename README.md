@@ -1,7 +1,5 @@
 # CAMHS-api
-A lightweight server for prototype data development
 
-Quick data server to get us up and running
 
 ### End points
 
