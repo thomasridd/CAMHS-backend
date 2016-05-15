@@ -75,7 +75,7 @@ public class BedRequestGenerator {
     }
 
     for (int i = 1; i < bedRequests.size(); i++) {
-      if (random.nextInt(5) % 2 == 0) {
+      if (i % 2 == 0) {
         request.actionBedRequest("reject", bedRequests.get(i).id);
       } else {
         request.actionBedRequest("cancel", bedRequests.get(i).id);
