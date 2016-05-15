@@ -22,38 +22,6 @@ import javax.ws.rs.POST;
 @Api
 public class Request {
 
-  @POST
-  public boolean post(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.addHeader("Access-Control-Allow-Origin", "*");
-
-    String[] split = request.getPathInfo().split("/");
-    if (split.length < 3) {
-      return false;
-    } else if (split[3].equalsIgnoreCase("reject")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
-      if (bedRequest != null) {
-        bedRequest.completed = new Date();
-        bedRequest.rejected = 1;
-      }
-
-    } else if (split[3].equalsIgnoreCase("accept")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
-      if (bedRequest != null) {
-        bedRequest.completed = new Date();
-        bedRequest.accepted = 1;
-      }
-
-    } else if (split[3].equalsIgnoreCase("cancel")) {
-      BedRequest bedRequest = Root.getBedRequestList().getRequest(split[2]);
-      if (bedRequest != null) {
-        bedRequest.completed = new Date();
-        bedRequest.cancelled = 1;
-      }
-
-    }
-    return true;
-  }
-
   @GET
   public PBedRequest get(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.addHeader("Access-Control-Allow-Origin", "*");
@@ -91,6 +59,14 @@ public class Request {
         bedRequest.completed = new Date();
         bedRequest.accepted = 1;
       }
+
+      Root.getBedRequestList().stream()
+              .filter(altRequest -> altRequest.nhsNumber.equalsIgnoreCase(bedRequest.nhsNumber))
+              .filter(altRequest -> (altRequest.rejected + altRequest.accepted) == 0)
+              .forEach(altRequest -> {
+                altRequest.cancelled = 1;
+              });
+
       return new PBedRequest(bedRequest);
 
     } else if (action.equalsIgnoreCase("cancel")) {
