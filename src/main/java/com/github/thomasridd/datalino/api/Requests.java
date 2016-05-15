@@ -50,7 +50,7 @@ public class Requests {
       System.out.println("No status");
     } else if (status.equalsIgnoreCase("active")) {
       bedRequestList = bedRequestList.stream()
-              .filter(bedRequest -> (bedRequest.accepted + bedRequest.cancelled + bedRequest.rejected == 0))
+              .filter(bedRequest -> ((bedRequest.accepted + bedRequest.cancelled + bedRequest.rejected) == 0))
               .collect(Collectors.toList());
     } else if (status.equalsIgnoreCase("rejected")) {
       bedRequestList = bedRequestList.stream()
