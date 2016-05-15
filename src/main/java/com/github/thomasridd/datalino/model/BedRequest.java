@@ -1,6 +1,11 @@
 package com.github.thomasridd.datalino.model;
 
+import fabricator.Contact;
+import fabricator.Fabricator;
+
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Tom.Ridd on 14/05/2016.
@@ -28,4 +33,7 @@ public class BedRequest {
   public String nhsNumber;
   public String age;
   public String gender;
+
+
+
 }
