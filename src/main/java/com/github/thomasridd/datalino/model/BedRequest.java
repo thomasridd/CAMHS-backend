@@ -18,9 +18,9 @@ public class BedRequest {
 
   public String patient;
 
-  int beds_type1 = 0;
-  int beds_type2 = 0;
-  int beds_type3 = 0;
+  public int beds_type1 = 0;
+  public int beds_type2 = 0;
+  public int beds_type3 = 0;
 
   public int accepted = 0;
   public int rejected = 0;
@@ -34,6 +34,5 @@ public class BedRequest {
   public String age;
   public String gender;
 
-
-
+  public int beds_type = 0;
 }

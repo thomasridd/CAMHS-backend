@@ -80,6 +80,16 @@ public class Requests {
                                       HttpServletResponse response,
                                       BedRequest bedRequest) throws IOException {
     bedRequest.created = new Date();
+    bedRequest.id = Root.getBedRequestList().size() + 1 + "";
+
+    if (bedRequest.beds_type == 1) {
+      bedRequest.beds_type1 = 1;
+    } else if (bedRequest.beds_type == 2) {
+      bedRequest.beds_type2 = 1;
+    } else if (bedRequest.beds_type3 == 3) {
+      bedRequest.beds_type3 = 1;
+    }
+
     Root.addBedRequest(bedRequest);
     return bedRequest;
   }
